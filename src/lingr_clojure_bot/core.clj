@@ -13,8 +13,8 @@
              "/"
              {body :body}
              (str (try
-                    (sb (read-string (:text (:message (read-json (slurp body))))))
+                    (sb (read-string (:text (:message (first (:events (read-json (slurp body))))))))
                     (catch java.util.concurrent.ExecutionException e (str e))))))
 
 (defn -main []
-  (run-jetty hello {:port 4567}))
+  (run-jetty hello {:port 80}))
