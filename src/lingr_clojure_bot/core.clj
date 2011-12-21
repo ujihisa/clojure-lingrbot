@@ -13,10 +13,10 @@
   (GET "/" [] "hello")
   (POST "/"
         {body :body}
-        (str (try
-               (let [code (:text (:message (first (:events (read-json (slurp body))))))]
-                 (sb (read-string code)))
-               (catch java.util.concurrent.ExecutionException e (str e))))))
+        (let [code (:text (:message (first (:events (read-json (slurp body))))))]
+          (try
+            (str (sb (read-string code)))
+            (catch java.util.concurrent.ExecutionException e '')))))
 
 (defn -main []
   (run-jetty hello {:port 80}))
