@@ -22,4 +22,4 @@
             ""))))
 
 (defn -main []
-  (run-jetty hello {:port 4567}))
+  (run-jetty hello {:port 80}))
