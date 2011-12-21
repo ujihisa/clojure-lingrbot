@@ -16,7 +16,7 @@
         (let [code (:text (:message (first (:events (read-json (slurp body))))))]
           (try
             (str (sb (read-string code)))
-            (catch java.util.concurrent.ExecutionException e '')))))
+            (catch java.util.concurrent.ExecutionException e "")))))
 
 (defn -main []
-  (run-jetty hello {:port 80}))
+  (run-jetty hello {:port 4567}))
