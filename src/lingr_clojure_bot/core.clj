@@ -8,6 +8,12 @@
 
 (def sb (sandbox #{}))
 
+(defn sun [] "http://factoryjoe.s3.amazonaws.com/emoticons/emoticon-0157-sun.gif")
+
+(defn format-for-lingr [obj]
+  (str (cond (seq? obj) (seq obj)
+             :else obj)))
+
 (defroutes
   hello
   (GET "/" [] "hello")
@@ -17,7 +23,7 @@
               expr (read-string code)]
           (if (list? expr)
             (try
-              (str (sb expr))
+              (format-for-lingr (sb expr))
               (catch java.util.concurrent.ExecutionException e ""))
             ""))))
 
