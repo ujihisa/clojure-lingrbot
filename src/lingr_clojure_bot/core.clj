@@ -7,8 +7,13 @@
   (:import java.util.concurrent.ExecutionException))
 
 (def sb (sandbox #{}))
-
-(defn sun [] "http://factoryjoe.s3.amazonaws.com/emoticons/emoticon-0157-sun.gif")
+(sb '(do
+       (defn what-time []
+         (.format (doto (java.text.DateFormat/getDateTimeInstance) (.setTimeZone (java.util.TimeZone/getTimeZone "PST"))) (java.util.Date.)))
+       (defn sun []
+         "http://factoryjoe.s3.amazonaws.com/emoticons/emoticon-0157-sun.gif")
+       (defn rock []
+         "http://factoryjoe.s3.amazonaws.com/emoticons/emoticon-0178-rock.gif")))
 
 (defn format-for-lingr [obj]
   (str (cond (seq? obj) (seq obj)
