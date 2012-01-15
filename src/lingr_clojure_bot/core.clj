@@ -28,13 +28,15 @@
   (GET "/" [] "hello")
   (POST "/"
         {body :body}
-        (let [code (:text (:message (first (:events (read-json (slurp body))))))
-              expr (read-string code)]
-          (if (list? expr)
-            (try
-              (format-for-lingr (sb expr))
-              (catch java.util.concurrent.ExecutionException e ""))
-            ""))))
+        (let [message (:message (first (:events (read-json (slurp body)))))]
+          (sb (list 'def 'message message))
+          (let [code (:text message)
+                expr (read-string code)]
+            (if (list? expr)
+              (try
+                (format-for-lingr (sb expr))
+                (catch java.util.concurrent.ExecutionException e ""))
+              "")))))
 
 (defn -main []
   (run-jetty hello {:port 80}))
