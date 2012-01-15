@@ -31,7 +31,7 @@
         (let [message (:message (first (:events (read-json (slurp body)))))]
           (sb (list 'def 'message message))
           (let [code (:text message)
-                expr (read-string code)]
+                expr (try (read-string code) (catch java.lang.RuntimeException e '()))]
             (if (list? expr)
               (try
                 (format-for-lingr (sb expr))
