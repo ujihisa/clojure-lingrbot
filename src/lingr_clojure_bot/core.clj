@@ -16,7 +16,8 @@
        (defn sun []
          "http://factoryjoe.s3.amazonaws.com/emoticons/emoticon-0157-sun.gif")
        (defn rock []
-         "http://factoryjoe.s3.amazonaws.com/emoticons/emoticon-0178-rock.gif")))
+         "http://factoryjoe.s3.amazonaws.com/emoticons/emoticon-0178-rock.gif")
+       (defn locals [] (ns-interns *ns*))))
 
 (defn format-for-lingr [obj]
   (str (cond (seq? obj) (seq obj)
