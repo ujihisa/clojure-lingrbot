@@ -9,12 +9,12 @@
 (defn define-builtin-functions [sb]
   (sb '(do
          (defn what-time
-           ([] (what-time "PST"))
-           ([tz] (.format
+           [] (what-time "PST")
+           [tz] (.format
                   (doto
                     (java.text.DateFormat/getDateTimeInstance)
                     (.setTimeZone (java.util.TimeZone/getTimeZone tz)))
-                         (java.util.Date.))))
+                         (java.util.Date.)))
          (defn sun []
            "http://factoryjoe.s3.amazonaws.com/emoticons/emoticon-0157-sun.gif")
          (defn rock []
