@@ -4,7 +4,8 @@
     [compojure.core]
     [ring.adapter.jetty]
     [clojail core])
-  (:import java.util.concurrent.ExecutionException))
+  (:import java.util.concurrent.ExecutionException)
+  (:require clojure.contrib.import-staitc))
 
 (def sb (sandbox #{}))
 (sb '(do
