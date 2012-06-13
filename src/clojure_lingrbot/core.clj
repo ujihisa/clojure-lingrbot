@@ -24,8 +24,7 @@
   (str (cond (seq? obj) (seq obj)
              :else obj)))
 
-(defroutes
-  hello
+(defroutes hello
   (GET "/" [] "hello")
   (POST "/"
         {body :body}
