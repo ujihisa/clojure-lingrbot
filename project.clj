@@ -6,4 +6,4 @@
                  [ring "1.0.1"]
                  [clojail "0.5.1"]]
   :main clojure-lingrbot.core
-  :jvm-opts ["-Djava.security.policy=example.policy"]))
+  :jvm-opts ["-Djava.security.policy=example.policy"])
