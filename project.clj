@@ -5,4 +5,5 @@
                  [compojure "1.0.0-RC2"]
                  [ring "1.0.1"]
                  [clojail "0.5.1"]]
-  :main clojure-lingrbot.core)
+  :main clojure-lingrbot.core
+  :jvm-opts ["-Djava.security.policy=example.policy"]))
