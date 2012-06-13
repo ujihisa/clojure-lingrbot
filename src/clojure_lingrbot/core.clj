@@ -3,7 +3,7 @@
     [clojure.data.json :only (read-json)]
     [compojure.core]
     [ring.adapter.jetty]
-    [clojail core])
+    [clojail.core :only sandbox])
   (:import java.util.concurrent.ExecutionException))
 
 (def sb (sandbox #{}))
