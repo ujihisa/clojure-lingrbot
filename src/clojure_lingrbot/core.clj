@@ -32,12 +32,12 @@
   (POST "/"
         {body :body}
         (let [message (:message (first (:events (read-json (slurp body)))))]
-          (sb (list 'def 'message message))
+          #_(sb (list 'def 'message message))
           (let [code (:text message)
                 expr (try (read-string code) (catch RuntimeException e '()))]
             (if (list? expr)
               (try
-                (format-for-lingr (sb expr))
+                (format-for-lingr (sb (list 'let ['message message] expr)))
                 (catch java.util.concurrent.ExecutionException e ""))
               "")))))
 
