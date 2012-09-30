@@ -35,7 +35,8 @@
                             :let [expr (try
                                          (read-string code)
                                          (catch RuntimeException e nil))]]
-                        (when (seq? expr)
+                        (when (and (sequential? expr)
+                                   (not (string? expr)))
                           (try
                             (format-for-lingr (sb (list 'let ['message message] expr)))
                             (catch ExecutionException e nil))))]
