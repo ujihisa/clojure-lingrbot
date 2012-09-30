@@ -23,8 +23,9 @@
        (defn locals [] (ns-interns *ns*))))
 
 (defn format-for-lingr [obj]
-  (str (cond (seq? obj) (seq obj)
-             :else obj)))
+  (cond
+    (seq? obj) (str (seq obj))
+    :else (str obj)))
 
 (defroutes hello
   (GET "/" [] "hello")
@@ -33,7 +34,7 @@
         (let [message (:message (first (:events (read-json (slurp body)))))]
           (sb (list 'def 'message message))
           (let [code (:text message)
-                expr (try (read-string code) (catch java.lang.RuntimeException e '()))]
+                expr (try (read-string code) (catch RuntimeException e '()))]
             (if (list? expr)
               (try
                 (format-for-lingr (sb expr))
