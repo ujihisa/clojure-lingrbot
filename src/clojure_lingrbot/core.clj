@@ -31,9 +31,9 @@
   (GET "/" [] "hello")
   (POST "/"
         {body :body}
-        (let [message (:message (first (:events (read-json (slurp body)))))
-              code (:text message)
-              expr (try (read-string code) (catch RuntimeException e '()))]
+        (for [message (map :message (:events (read-json (slurp body))))
+              :let [code (:text message)]
+              :let [expr (try (read-string code) (catch RuntimeException e '()))]]
           (when (list? expr)
             (try
               (format-for-lingr (sb (list 'let ['message message] expr)))
