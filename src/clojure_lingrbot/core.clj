@@ -37,7 +37,7 @@
           (when (list? expr)
             (try
               (format-for-lingr (sb (list 'let ['message message] expr)))
-              (catch ExecutionException e (str e)))))))
+              (catch ExecutionException e nil))))))
 
 (defn -main []
   (run-jetty hello {:port 4001}))
