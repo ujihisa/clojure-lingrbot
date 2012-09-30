@@ -24,8 +24,8 @@
 
 (defn format-for-lingr [obj]
   (cond
-    (seq? obj) (str (seq obj))
-    :else (str obj)))
+    (seq? obj) (seq obj)
+    :else obj))
 
 (defroutes hello
   (GET "/" [] "hello")
@@ -34,11 +34,10 @@
         (let [message (:message (first (:events (read-json (slurp body)))))
               code (:text message)
               expr (try (read-string code) (catch RuntimeException e '()))]
-          (if (list? expr)
+          (when (list? expr)
             (try
               (format-for-lingr (sb (list 'let ['message message] expr)))
-              (catch java.util.concurrent.ExecutionException e ""))
-            ""))))
+              (catch ExecutionException e ""))))))
 
 (defn -main []
   (run-jetty hello {:port 4001}))
