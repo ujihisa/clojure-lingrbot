@@ -1,9 +1,8 @@
 (ns clojure-lingrbot.core
-  (:use
-    [clojure.data.json :only (read-json)]
-    [compojure.core]
-    [ring.adapter.jetty]
-    [clojail.core :only (sandbox)])
+  (:use [compojure.core]
+        [clojure.data.json :only (read-json)]
+        [ring.adapter.jetty :only (run-jetty)]
+        [clojail.core :only (sandbox)])
   (:import java.util.concurrent.ExecutionException))
 
 (def sb (sandbox #{}))
@@ -33,8 +32,10 @@
         {body :body}
         (let [results (for [message (map :message (:events (read-json (slurp body))))
                             :let [code (:text message)]
-                            :let [expr (try (read-string code) (catch RuntimeException e '()))]]
-                        (when (list? expr)
+                            :let [expr (try
+                                         (read-string code)
+                                         (catch RuntimeException e nil))]]
+                        (when (seq? expr)
                           (try
                             (format-for-lingr (sb (list 'let ['message message] expr)))
                             (catch ExecutionException e nil))))]
