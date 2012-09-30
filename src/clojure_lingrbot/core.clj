@@ -24,8 +24,8 @@
 
 (defn format-for-lingr [obj]
   (cond
-    (seq? obj) (seq obj)
-    :else obj))
+    (seq? obj) (str (seq obj))
+    :else (str obj)))
 
 (defroutes hello
   (GET "/" [] "hello")
@@ -37,7 +37,7 @@
           (when (list? expr)
             (try
               (format-for-lingr (sb (list 'let ['message message] expr)))
-              (catch ExecutionException e ""))))))
+              (catch ExecutionException e (str e)))))))
 
 (defn -main []
   (run-jetty hello {:port 4001}))
