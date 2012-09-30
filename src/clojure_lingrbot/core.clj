@@ -31,13 +31,14 @@
   (GET "/" [] "hello")
   (POST "/"
         {body :body}
-        (for [message (map :message (:events (read-json (slurp body))))
+        (let [results (for [message (map :message (:events (read-json (slurp body))))
               :let [code (:text message)]
               :let [expr (try (read-string code) (catch RuntimeException e '()))]]
           (when (list? expr)
             (try
               (format-for-lingr (sb (list 'let ['message message] expr)))
-              (catch ExecutionException e nil))))))
+              (catch ExecutionException e nil))))]
+          (clojure.string/join "\n" results))))
 
 (defn -main []
   (run-jetty hello {:port 4001}))
