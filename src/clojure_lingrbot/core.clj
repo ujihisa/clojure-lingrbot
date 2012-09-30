@@ -34,11 +34,11 @@
         (let [message (:message (first (:events (read-json (slurp body)))))
               code (:text message)
               expr (try (read-string code) (catch RuntimeException e '()))]
-            (if (list? expr)
-              (try
-                (format-for-lingr (sb (list 'let ['message message] expr)))
-                (catch java.util.concurrent.ExecutionException e ""))
-              ""))))
+          (if (list? expr)
+            (try
+              (format-for-lingr (sb (list 'let ['message message] expr)))
+              (catch java.util.concurrent.ExecutionException e ""))
+            ""))))
 
 (defn -main []
   (run-jetty hello {:port 4001}))
