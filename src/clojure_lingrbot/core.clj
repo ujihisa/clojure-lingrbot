@@ -11,7 +11,9 @@
        (defn what-time
          ([] (what-time 'PST))
          ([tz] (.format (doto
-                          (java.text.DateFormat/getDateTimeInstance)
+                          (java.text.DateFormat/getDateTimeInstance
+                            java.text.DateFormat/FULL
+                            java.text.DateFormat/FULL)
                           (.setTimeZone (java.util.TimeZone/getTimeZone (str tz))))
                         (java.util.Date.))))
        (defn sun []
