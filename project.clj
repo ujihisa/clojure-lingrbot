@@ -1,5 +1,5 @@
 (defproject clojure-lingrbot "1.0.0-SNAPSHOT"
-  :description "FIXME: write description"
+  :description "Clojure REPL for Lingr"
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [org.clojure/data.json "0.1.2"]
                  [compojure "1.0.0-RC2"]

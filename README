@@ -1,6 +1,6 @@
 # lingr-clojure-bot
 
-FIXME: write description
+Clojure REPL for Lingr
 
 ## Usage
 
@@ -8,6 +8,6 @@ FIXME: write
 
 ## License
 
-Copyright (C) 2011 FIXME
+Copyright (C) 2011-2012 Tatsuhiro Ujihisa
 
 Distributed under the Eclipse Public License, the same as Clojure.
