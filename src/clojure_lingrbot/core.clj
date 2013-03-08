@@ -3,7 +3,8 @@
         [clojure.data.json :only (read-json)]
         [ring.adapter.jetty :only (run-jetty)]
         [clojail.core :only (sandbox)])
-  (:import java.util.concurrent.ExecutionException))
+  (:import java.util.concurrent.ExecutionException)
+  (:gen-class))
 
 (def sb (sandbox #{}))
 (sb '(do

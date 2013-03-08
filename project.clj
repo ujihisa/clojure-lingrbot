@@ -1,4 +1,4 @@
-(defproject clojure-lingrbot "1.0.0-SNAPSHOT"
+(defproject clojure-lingrbot "1.0.0"
   :description "Clojure REPL for Lingr"
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [org.clojure/data.json "0.1.2"]
