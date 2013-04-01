@@ -4,6 +4,6 @@
                  [org.clojure/data.json "0.1.2"]
                  [compojure "1.0.0-RC2"]
                  [ring "1.0.1"]
-                 [clojail "0.5.1"]]
+                 [clojail "1.0.6"]]
   :main clojure-lingrbot.core
   :jvm-opts ["-Djava.security.policy=example.policy"])
