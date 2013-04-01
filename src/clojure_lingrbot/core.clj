@@ -43,6 +43,5 @@
                             (catch ExecutionException e nil))))]
           (clojure.string/join "\n" results))))
 
-(defn -main [& args]
-  (let [port (or (first args) 4001)]
-    (run-jetty hello {:port port})))
+(defn -main []
+  (run-jetty hello {:port 4001}))
