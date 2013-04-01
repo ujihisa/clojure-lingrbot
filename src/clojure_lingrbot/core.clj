@@ -44,4 +44,5 @@
           (clojure.string/join "\n" results))))
 
 (defn -main []
-  (run-jetty hello {:port 4001}))
+  (let [port (Integer/parseInt (or (System/getenv "PORT") "4001"))]
+    (run-jetty hello {:port port})))
