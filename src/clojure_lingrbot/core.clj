@@ -28,7 +28,8 @@
     :else (str obj)))
 
 (defroutes hello
-  (GET "/" [] "hello")
+  (GET "/" [] (str {:author "Tatsuhiro Ujihisa"
+                    :web "https://github.com/ujihisa/clojure-lingrbot"}))
   (POST "/"
         {body :body}
         (let [results (for [message (map :message (:events (read-json (slurp body))))
