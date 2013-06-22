@@ -28,22 +28,24 @@
     :else (str obj)))
 
 (defroutes hello
-  (GET "/" [] (str {:author "Tatsuhiro Ujihisa"
-                    :web "https://github.com/ujihisa/clojure-lingrbot"}))
-  (POST "/"
-        {body :body}
-        (let [results (for [message (map :message (:events (read-json (slurp body))))
-                            :let [code (:text message)]
-                            :let [expr (try
-                                         (read-string code)
-                                         (catch RuntimeException e nil))]]
-                        (when (and (sequential? expr)
-                                   (not (string? expr)))
-                          (try
-                            (format-for-lingr (sb (list 'let ['message message] expr)))
-                            (catch ExecutionException e nil))))]
-          (clojure.string/join "\n" results))))
+  (GET "/" []
+    (str {:author "Tatsuhiro Ujihisa"
+          :web "https://github.com/ujihisa/clojure-lingrbot"}))
+  (POST "/" {body :body}
+    (let [results
+          (for [message (map :message (:events (read-json (slurp body))))
+                :let [code (:text message)]
+                :let [expr (try
+                             (read-string code)
+                             (catch RuntimeException e nil))]]
+            (when (and (sequential? expr)
+                       (not (string? expr)))
+              (try
+                (format-for-lingr (sb (list 'let ['message message] expr)))
+                (catch ExecutionException e nil))))]
+      (clojure.string/join "\n" results))))
 
 (defn -main []
   (let [port (Integer/parseInt (or (System/getenv "PORT") "4001"))]
     (run-jetty hello {:port port})))
+; vim: set lispwords+=GET,POST :
