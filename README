@@ -8,7 +8,7 @@ Clojure REPL for Lingr
     * `lein run`
 * run after compile
     * `lein uberjar`
-    * java -Djava.security.policy=example.policy -jar target/clojure-lingrbot-1.0.0-SNAPSHOT-standalone.jar
+    * java -Djava.security.policy=example.policy -jar target/clojure-lingrbot-1.1.1-SNAPSHOT-standalone.jar
 
 ## License
 

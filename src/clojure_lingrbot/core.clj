@@ -1,4 +1,7 @@
 (ns clojure-lingrbot.core
+  (:require #_"just for exposing them to let users use"
+            [clojure.core.match]
+            [clojure.core.strint])
   (:use [compojure.core]
         [clojure.data.json :only (read-json)]
         [ring.adapter.jetty :only (run-jetty)]
