@@ -8,10 +8,10 @@ Clojure REPL for Lingr
     * `lein run`
 * run after compile
     * `lein uberjar`
-    * java -Djava.security.policy=example.policy -jar target/clojure-lingrbot-1.1.1-SNAPSHOT-standalone.jar
+    * java -Djava.security.policy=example.policy -jar target/clojure-lingrbot-1.1.2-SNAPSHOT-standalone.jar
 
 ## License
 
-Copyright (C) 2011-2013 Tatsuhiro Ujihisa
+Copyright (C) 2011-2014 Tatsuhiro Ujihisa
 
 Distributed under the Eclipse Public License, the same as Clojure.
