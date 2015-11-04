@@ -1,7 +1,8 @@
 (ns clojure-lingrbot.core
-  (:require #_"just for exposing them to let users use"
+  (:require ; just for exposing them to let users use
             [clojure.core.match]
             [clojure.core.strint]
+            ; Actual requires
             [clojure.data.json :refer [read-json]]
             [ring.adapter.jetty :refer [run-jetty]])
   (:use [compojure.core]
