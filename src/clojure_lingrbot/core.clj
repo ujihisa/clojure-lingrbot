@@ -4,10 +4,10 @@
             [clojure.core.strint]
             ; Actual requires
             [clojure.data.json :refer [read-json]]
-            [ring.adapter.jetty :refer [run-jetty]])
-  (:use [compojure.core]
-        [clojail.core :only (sandbox)])
-  (:import java.util.concurrent.ExecutionException)
+            [ring.adapter.jetty :refer [run-jetty]]
+            [clojail.core :only [sandbox]]
+            [compojure.core :refer :all])
+  (:import [java.util.concurrent ExecutionException])
   (:gen-class))
 
 (def sb (sandbox #{}))
