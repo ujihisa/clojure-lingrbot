@@ -2,6 +2,9 @@
   (:require ; just for exposing them to let users use
             [clojure.core.match]
             [clojure.core.strint]
+            [clj-time.coerce]
+            [clj-time.core]
+            [incanter.core]
             ; Actual requires
             [clojure.data.json :refer [read-json]]
             [ring.adapter.jetty :refer [run-jetty]]
