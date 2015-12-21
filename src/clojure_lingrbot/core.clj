@@ -5,7 +5,7 @@
             ; Actual requires
             [clojure.data.json :refer [read-json]]
             [ring.adapter.jetty :refer [run-jetty]]
-            [clojail.core :only [sandbox]]
+            [clojail.core :refer [sandbox]]
             [compojure.core :refer :all])
   (:import [java.util.concurrent ExecutionException])
   (:gen-class))
